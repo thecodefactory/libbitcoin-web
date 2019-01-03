@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta http-equiv=content-language content=en>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="robots" content="noindex">
+  
+  <link rel="icon" href="images/libbitcoin-logo.ico" type="image/x-icon" />
+  <title>Libbitcoin Realtime Web Explorer</title>
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+  <script>
+  /*
+  @licstart The following is the entire license notice for the
+  JavaScript code below this notice.
+
+  Copyright (C) 2018  Neill Miller (neillm@thecodefactory.org)
+
+  The JavaScript code in this page is free software: you can
+  redistribute it and/or modify it under the terms of the GNU General
+  Public License (GNU GPL) as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any
+  later version.  The code is distributed WITHOUT ANY WARRANTY;
+  without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+  A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+  As additional permission under GNU GPL version 3 section 7, you may
+  distribute non-source (e.g., minimized or compacted) forms of that
+  code without the copy of the GNU GPL normally required by section 4,
+  provided you include this license notice and a URL through which
+  recipients can access the Corresponding Source.
+
+  @licend The above is the entire license notice for the JavaScript
+  code below this notice.
+  */
+  </script>
+  
+  <script type="text/javascript" src="js/config.js"></script>
+  <script type="text/javascript" src="js/libbitcoin.js"></script>
+  
+  <link href="css/bootstrap.min.css" type="text/css" rel="StyleSheet" />
+  <link href="css/libbitcoin.css" type="text/css" rel="StyleSheet" />
+  
+  <noscript>Sorry, your browser does not support JavaScript!</noscript> 
+  
+  <script>
+    $(document).ready(function()
+    {
+        var secure = false;
+
+        if (secure)
+        {
+            start_block_subscription(SECURE_BLOCK_SERVICE_URL);
+            start_heartbeat_subscription(SECURE_HEARTBEAT_SERVICE_URL);
+            start_transaction_subscription(SECURE_TRANSACTION_SERVICE_URL);
+        }
+        else
+        {
+            start_block_subscription(PUBLIC_BLOCK_SERVICE_URL);
+            start_heartbeat_subscription(PUBLIC_HEARTBEAT_SERVICE_URL);
+            start_transaction_subscription(PUBLIC_TRANSACTION_SERVICE_URL);
+        }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="main" class="main-div">
+    <div class="width80 center">
+      <a target="blank_" href="https://github.com/libbitcoin">
+        <img src="images/libbitcoin-header.png" class="margint10">
+      </a>
+      <div>
+        <table class="table table-hover table-dark table-sm">
+          <caption>Heartbeat</caption>
+          <thead>
+            <tr>
+              <th scope="col">Last updated</th>
+              <th scope="col">Block Height</th>
+            </tr>
+          </thead>
+          <tbody id="heartbeats">
+          </tbody>
+      </div>
+
+      <div>
+        <table class="table table-hover table-dark table-sm">
+          <caption>Recent Blocks</caption>
+          <thead>
+            <tr>
+              <th scope="col">Block Height</th> 
+              <th scope="col">Block Hash</th> 
+              <th scope="col">Block Age</th>
+              <th scope="col">Block Version</th>
+            </tr>
+          </thead>
+          <tbody id="blocks">
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <table class="table table-hover table-dark table-sm">
+          <caption>Latest Transactions</caption>
+          <thead>
+            <tr>
+              <th scope="col">Transaction Hash</th>
+              <th scope="col">Total Transacted (BTC)</th>
+              <th scope="col"># Inputs</th>
+              <th scope="col"># Outputs</th>
+              <th scope="col">Received Time</th>
+            </tr>
+          </thead>
+          <tbody id="transactions">
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p>Powered by <a target="blank_" href="https://github.com/libbitcoin">Libbitcoin</a>.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

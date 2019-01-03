@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta http-equiv=content-language content=en>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="robots" content="noindex">
+  
+  <link rel="icon" href="images/libbitcoin-logo.ico" type="image/x-icon" />
+  <title>Libbitcoin Web Service</title>
+  
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+  <script>
+  /*
+  @licstart The following is the entire license notice for the
+  JavaScript code below this notice.
+
+  Copyright (C) 2018  Neill Miller (neillm@thecodefactory.org)
+
+  The JavaScript code in this page is free software: you can
+  redistribute it and/or modify it under the terms of the GNU General
+  Public License (GNU GPL) as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any
+  later version.  The code is distributed WITHOUT ANY WARRANTY;
+  without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+  A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+  As additional permission under GNU GPL version 3 section 7, you may
+  distribute non-source (e.g., minimized or compacted) forms of that
+  code without the copy of the GNU GPL normally required by section 4,
+  provided you include this license notice and a URL through which
+  recipients can access the Corresponding Source.
+
+  @licend The above is the entire license notice for the JavaScript
+  code below this notice.
+  */
+  </script>
+  
+  <script type="text/javascript" src="js/config.js"></script>
+  <script type="text/javascript" src="js/libbitcoin.js"></script>
+  
+  <link href="css/bootstrap.min.css" type="text/css" rel="StyleSheet" />
+  <link href="css/libbitcoin.css" type="text/css" rel="StyleSheet" />
+  
+  <noscript>Sorry, your browser does not support JavaScript!</noscript> 
+  
+  <script>
+    $(document).ready(function()
+    {
+        let hash = get_url_parameter('hash');
+        if (hash.length == 64)
+        {
+            let request = JSON.stringify({
+                'id' : parseInt(Math.random() * 1000000),
+                'method' : 'getrawtransaction',
+                'params' : [ hash ] });
+
+            let on_open = function(event)
+            {
+                console.log('Query client connected and sending: ' + request);
+                issue_query(request, 'result');
+            };
+
+            let on_close = function(event)
+            {
+                console.log('Socket closed');
+            };
+
+            let on_data = function(message)
+            {
+                $('#result').append(message.data);
+            };
+
+            let on_error = function(message)
+            {
+                console.log('Socket error: ' + message);
+            };
+
+            start_query(PUBLIC_QUERY_SERVICE_URL, on_open,
+                on_close, on_data, on_error);
+        }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="main" class="main-div">
+    <div class="width80 center">
+      <img src="images/libbitcoin-header.png" class="margint10">
+    </div>
+  </div>
+
+  <div>
+    <pre>
+      <div id="result"></div>
+    </pre>
+  </div>
+
+</body>
+</html>
+

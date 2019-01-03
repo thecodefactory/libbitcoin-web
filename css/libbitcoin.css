@@ -1,0 +1,43 @@
+
+.main-div
+{
+    font-face: Arial, Tahoma;
+    font-size: 12px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+div.center
+{
+    margin: 0 auto;
+}
+
+.center
+{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heading
+{
+    font-style: bold;
+}
+
+.width80
+{
+    width: 80%;
+}
+
+.margint10
+{
+    margin-top: 10px;
+}
+
+caption
+{
+    display: table-caption;
+    text-align: center;
+    caption-side: top;
+}
