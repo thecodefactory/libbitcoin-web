@@ -50,7 +50,7 @@ ln -s libbitcoin-web web
 
 ./bin/bs
 
-Example 1: Using nodejs to query the libbitcoin websocket interface
+# Example 1: Using nodejs to query the libbitcoin websocket interface
 
 Once syncing is complete, from another console window, try the nodejs websocket examples (designed to work with mainnet only.  Edit the source and change the transaction_hash to something in testnet if you're using testnet, for example ```var transaction_hash = 'a54e1bba698706dab7af220e6af00007d5d96807392badd550155085c230a151';```)
 
@@ -77,9 +77,9 @@ This simple script issues a query and then waits for the response before issuing
 
 An alternative script is included called ```web/examples/libbitcoin-query-example-perf.js``` which is much faster because it issues the fetch tx query every millisecond (on a timer).
 
-![Web Screenshot](http://thecodefactory-data.org/libbitcoin/libbitcoin-web-ss-12-28-2018.png "Libbitcoin Web")
+# Example 2: Using a simple libbitcoin web/websocket interface
 
-Example 2: Using a simple libbitcoin web/websocket interface
+![Web Screenshot](http://thecodefactory-data.org/libbitcoin/libbitcoin-web-ss-12-28-2018.png "Libbitcoin Web")
 
 While the previous example demonstrates how to use nodejs to query the libbitcoin server using native websockets, this example demonstrates how to visualize some information provided by the server in a browser, also using websockets.
 
@@ -95,11 +95,11 @@ If all of the steps have previously been completed, just point your web browser 
 
 NOTE: When you click any links, they load other pages that are still poining to the PUBLIC service URLs, which will not work when connected to the secure interface.  Edit each of the files and replace, for example, PUBLIC_BLOCK_SERVICE_URL with SECURE_BLOCK_SERVICE_URL (for all applicable services).
 
-Example 3: Using bitcoin-cli to query the Libbitcoin web service directly (using JSON-RPC)
-
-# Issue bitcoin-cli command line specifying the -rpcconnect and -rpcport parameters to point to the public websocket query service IP address and port
+# Example 3: Using bitcoin-cli to query the Libbitcoin web service directly (using JSON-RPC)
 
 ```
+# Issue bitcoin-cli command line specifying the -rpcconnect and -rpcport parameters to point to the public websocket query service IP address and port
+
 $ bitcoin-cli -rpcconnect=127.0.0.1 -rpcport=9071 getblockheader 000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506
 {
   "hash": "000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506",
@@ -128,7 +128,3 @@ $ bitcoin-cli -rpcconnect=127.0.0.1 -rpcport=9071 getblockhash 100000
 $ bitcoin-cli -rpcconnect=127.0.0.1 -rpcport=9071 getblockcount
 556832
 ```
-
-![RPC Screenshot](http://thecodefactory-data.org/libbitcoin/libbitcoin-rpc-ss-12-28-2018.png "Libbitcoin RPC")
-
-
