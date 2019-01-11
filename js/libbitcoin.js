@@ -202,7 +202,7 @@ function handle_block(block, query_url)
 function handle_heartbeat(heartbeat)
 {
     let url = '<a target="blank_" href="fetch-height.html">' +
-        heartbeat.height + '</a>';
+        heartbeat.result + '</a>';
     let row = '<tr><td>' + new Date().toLocaleString() +
         '</td>><td>' + url + '</td></tr>';
 
